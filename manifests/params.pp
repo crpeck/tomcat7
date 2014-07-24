@@ -6,5 +6,5 @@ class tomcat7::params {
   # Variables must be named in lower case
   # They will be uppercased in the environment (limitation of ruby hashes)
   $setenv         = { my_tomcat_home => '/var/lib/tomcat', }
-  $manager_hosts  = [ '127\.0\.0\.1' ]
+  $manager_hosts  = '127\.0\.0\.1'
 }
