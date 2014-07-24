@@ -4,7 +4,10 @@ tomcat7
 A puppet module for managing single instances of tomcat.
 
 This class installs Apache Tomcat and Tomcat Admin/Manager
+
 Note the following are also set in the server.xml file:
+
+```
 <Valve className="org.apache.catalina.valves.RemoteIpValve"
            remoteIpHeader="x-forwarded-for"
            remoteIpProxiesHeader="x-forwarded-by"
@@ -49,4 +52,4 @@ class { '::tomcat':
                                        ],
   manager_hosts                     => '127\.0\.0\.1,192\.168\.*\.*,10\.\*\.*\.*',
 }
-
+```
