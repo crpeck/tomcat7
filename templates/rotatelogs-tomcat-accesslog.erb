@@ -1,0 +1,9 @@
+/var/log/<%= @tomcat_pkg -%>/localhost_access_log.* {
+  copytruncate
+  weekly
+  rotate 30
+  compress
+  missingok
+  su <%= @tomcat_user -%> <%= @tomcat_group -%>
+  create 640 <%= @tomcat_user -%> <%= @tomcat_group -%>
+}

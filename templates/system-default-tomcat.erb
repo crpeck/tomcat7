@@ -1,0 +1,133 @@
+# This file is managed by Puppet. Do NOT modify it here.
+#
+#
+<% if @osfamily == 'Debian' -%>
+###### /etc/default/tomcat7 from ubuntu 14.04 LTS
+#
+# Run Tomcat as this user ID. Not setting this or leaving it blank will use the
+# default of tomcat7.
+TOMCAT7_USER=tomcat7
+
+# Run Tomcat as this group ID. Not setting this or leaving it blank will use
+# the default of tomcat7.
+TOMCAT7_GROUP=tomcat7
+
+# The home directory of the Java development kit (JDK). You need at least
+# JDK version 1.5. If JAVA_HOME is not set, some common directories for 
+# OpenJDK, the Sun JDK, and various J2SE 1.5 versions are tried.
+#JAVA_HOME=/usr/lib/jvm/openjdk-6-jdk
+
+# You may pass JVM startup parameters to Java here. If unset, the default
+# options will be: -Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC
+#
+# Use "-XX:+UseConcMarkSweepGC" to enable the CMS garbage collector (improved
+# response time). If you use that option and you run Tomcat on a machine with
+# exactly one CPU chip that contains one or two cores, you should also add
+# the "-XX:+CMSIncrementalMode" option.
+# PUPPET NOTE - modified to remove -Xmx128m
+#JAVA_OPTS="-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC"
+JAVA_OPTS="-Djava.awt.headless=true -XX:+UseConcMarkSweepGC"
+
+# To enable remote debugging uncomment the following line.
+# You will then be able to use a java debugger on port 8000.
+#JAVA_OPTS="${JAVA_OPTS} -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+
+# Java compiler to use for translating JavaServer Pages (JSPs). You can use all
+# compilers that are accepted by Ant's build.compiler property.
+#JSP_COMPILER=javac
+
+# Use the Java security manager? (yes/no, default: no)
+#TOMCAT7_SECURITY=no
+
+# Number of days to keep logfiles in /var/log/tomcat7. Default is 14 days.
+#LOGFILE_DAYS=14
+# Whether to compress logfiles older than today's
+#LOGFILE_COMPRESS=1
+
+# Location of the JVM temporary directory
+# WARNING: This directory will be destroyed and recreated at every startup !
+#JVM_TMP=/tmp/tomcat7-temp
+
+# If you run Tomcat on port numbers that are all higher than 1023, then you
+# do not need authbind.  It is used for binding Tomcat to lower port numbers.
+# NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.
+# (yes/no, default: no)
+#AUTHBIND=no
+#
+###### end of default file
+<% end -%>
+<% if @osfamily == 'RedHat' -%>
+# /etc/sysconfig/tomcat6 default file for RedHat servers
+#
+# Service-specific configuration file for tomcat6. This will be sourced by
+# the SysV init script after the global configuration file
+# /etc/tomcat6/tomcat6.conf, thus allowing values to be overridden in
+# a per-service manner.
+#
+# NEVER change the init script itself. To change values for all services make
+# your changes in /etc/tomcat6/tomcat6.conf
+#
+# To change values for a specific service make your edits here.
+# To create a new service create a link from /etc/init.d/<your new service> to
+# /etc/init.d/tomcat6 (do not copy the init script) and make a copy of the
+# /etc/sysconfig/tomcat6 file to /etc/sysconfig/<your new service> and change
+# the property values so the two services won't conflict. Register the new
+# service in the system as usual (see chkconfig and similars).
+#
+
+# Where your java installation lives
+#JAVA_HOME="/usr/lib/jvm/java"
+
+# Where your tomcat installation lives
+#CATALINA_BASE="/usr/share/tomcat6"
+#CATALINA_HOME="/usr/share/tomcat6"
+#JASPER_HOME="/usr/share/tomcat6"
+#CATALINA_TMPDIR="/var/cache/tomcat6/temp"
+
+# You can pass some parameters to java here if you wish to
+#JAVA_OPTS="-Xminf0.1 -Xmaxf0.3"
+
+# Use JAVA_OPTS to set java.library.path for libtcnative.so
+#JAVA_OPTS="-Djava.library.path=/usr/lib64"
+
+# What user should run tomcat
+#TOMCAT_USER="tomcat"
+
+# You can change your tomcat locale here
+#LANG="en_US"
+
+# Run tomcat under the Java Security Manager
+#SECURITY_MANAGER="false"
+
+# Time to wait in seconds, before killing process
+#SHUTDOWN_WAIT="30"
+
+# Whether to annoy the user with "attempting to shut down" messages or not
+#SHUTDOWN_VERBOSE="false"
+
+# Set the TOMCAT_PID location
+#CATALINA_PID="/var/run/tomcat6.pid"
+
+# Connector port is 8080 for this tomcat6 instance
+#CONNECTOR_PORT="8080"
+
+# If you wish to further customize your tomcat environment,
+# put your own definitions here
+# (i.e. LD_LIBRARY_PATH for some jdbc drivers)
+<% end -%>
+#
+#  local Puppet settings
+#
+#
+<% scope['tomcat7::setenv'].each_pair do |variable, value| -%>
+<%= variable.upcase %>=<%= value %>
+<% end -%>
+
+#
+#
+# JAVA OPTS
+<% scope['tomcat7::java_opts'].each do |javaopt| -%>
+export JAVA_OPTS="${JAVA_OPTS} <%= javaopt %>"
+<% end -%>
+#
+# eof

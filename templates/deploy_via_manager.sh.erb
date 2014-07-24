@@ -1,0 +1,31 @@
+#!/bin/bash -e
+# thanks to https://github.com/laurilehmijoki/tomcat7_rhel
+
+if [ $# -eq 0 ]; then
+  echo "usage: $0 warfile version"
+  exit 1
+fi
+
+WAR_FILE=$1
+VERSION=$2
+
+
+if [ -z "$WAR_FILE" ]; then
+  echo "Usage: $0 [<full path to local .war] [VERSION TO DEPLOY (optional)]"
+  exit 1
+fi
+
+if [ ! -f "$WAR_FILE" ];
+then
+    echo "File $WAR_FILE was not found!"
+    exit 1
+fi
+
+VERSIONSTRING=""
+if [ ! -z "$VERSION" ]; then
+  echo "Using parallel deployment, deploying version $VERSION"
+  VERSIONSTRING="&version=$VERSION"
+fi
+
+
+curl --fail -4 -s -u <%=tomcat_admin_user%>:<%=tomcat_admin_password%> "http://localhost:<%=port%>/manager/text/deploy?path=/&tag=<%=application_name%>&war=file:$WAR_FILE&update=true$VERSIONSTRING"
