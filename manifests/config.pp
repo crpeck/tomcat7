@@ -5,7 +5,7 @@ class tomcat7::config {
     mode    => '0644',
     owner   => 'root',
     group   => $tomcat7::tomcat_group,
-    content => template('tomcat/server.xml.erb'),
+    content => template('tomcat7/server.xml.erb'),
   }
 
   file { "/etc/${tomcat7::tomcat_pkg}/Catalina/localhost/manager.xml":
@@ -13,7 +13,7 @@ class tomcat7::config {
     mode    => '0644',
     owner   => 'root',
     group   => $tomcat7::tomcat_group,
-    content => template('tomcat/manager.xml.erb'),
+    content => template('tomcat7/manager.xml.erb'),
   }
 
   file { "/var/lib/${tomcat7::tomcat_pkg}/bin":
@@ -30,7 +30,7 @@ class tomcat7::config {
     owner   => 'root',
     group   => $tomcat7::tomcat_group,
     require => File ["/var/lib/${tomcat7::tomcat_pkg}/bin"],
-    content => template('tomcat/system-default-tomcat.erb'),
+    content => template('tomcat7/system-default-tomcat.erb'),
   }
 
   file { "/etc/${tomcat7::tomcat_pkg}/tomcat-users.xml":
@@ -38,7 +38,7 @@ class tomcat7::config {
     mode    => '0640',
     owner   => 'root',
     group   => $tomcat7::tomcat_group,
-    content => template('tomcat/tomcat-users.xml.erb'),
+    content => template('tomcat7/tomcat-users.xml.erb'),
   }
 
   file { '/etc/logrotate.d/rotatelogs-tomcat-accesslog':
@@ -46,7 +46,7 @@ class tomcat7::config {
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
-    content => template('tomcat/rotatelogs-tomcat-accesslog.erb'),
+    content => template('tomcat7/rotatelogs-tomcat-accesslog.erb'),
   }
 
 }

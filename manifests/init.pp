@@ -1,4 +1,4 @@
-# Class: tomcat
+# Class: tomcat7
 #
 # This class installs Apache Tomcat and Tomcat Admin/Manager
 # Note the following are also set in the server.xml file:
@@ -30,7 +30,7 @@
 #
 # Sample Usage:
 #
-#  class { '::tomcat':
+#  class { '::tomcat7':
 #    port                              => '8080',
 #    ssl_port                          => '8443',
 #    java_opts                         => [ '-Xms512M', '-Xmx1024M' ],
@@ -48,7 +48,7 @@
 #  }
 
 
-class tomcat (
+class tomcat7 (
   $port            = $tomcat7::params::port,
   $ssl_port        = $tomcat7::params::ssl_port,
   $max_threads     = $tomcat7::params::max_threads,

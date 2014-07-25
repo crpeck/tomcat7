@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'tomcat', :type => 'class' do
+describe 'tomcat7', :type => 'class' do
 
   context "On a Debian/Ubuntu system" do
 
@@ -8,7 +8,7 @@ describe 'tomcat', :type => 'class' do
       :osfamily => 'Debian',
     } end
 
-    it { should create_class('tomcat7') }
+    it { should contain_class('tomcat7') }
     it { should contain_class('tomcat7::config') }
     it { should contain_class('tomcat7::package') }
     it { should contain_class('tomcat7::params') }
@@ -19,11 +19,6 @@ describe 'tomcat', :type => 'class' do
     describe 'config tomcat7' do
       it { should contain_group('tomcat7') }
       it { should contain_user('tomcat7') }
-      it { should contain_file('/etc/tomcat7/server.xml') }
-      it { should contain_file('/etc/tomcat7/tomcat-users.xml') }
-      it { should contain_file('/etc/logrotate.d/rotatelogs-tomcat-accesslog') }
-      it { should contain_file('/etc/tomcat7/Catalina/localhost/manager.xml') }
-      it { should contain_file('/etc/defaults/tomcat7') }
     end
 
     describe 'package tomcat7' do
