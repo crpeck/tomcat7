@@ -1,7 +1,8 @@
 class tomcat7::config {
 
-  if $manage_serverxml {
-    warn( 'NOTE - Puppet is managing the server.xml file' )
+  if $manage_serverxml == 'true' {
+    notice( "NOTE - Puppet is managing the server.xml file: $manage_serverxml" )
+    notify{ "NOTE - Puppet is managing the server.xml file: $manage_serverxml": }
     file { "/etc/${tomcat7::tomcat_pkg}/server.xml":
       ensure  => file,
       mode    => '0644',
@@ -9,6 +10,10 @@ class tomcat7::config {
       group   => $tomcat7::tomcat_group,
       content => template('tomcat7/server.xml.erb'),
     }
+  }
+  else {
+    notice( 'NOTE - Puppet is NOT managing the server.xml file' )
+    notify{ "NOTE - Puppet is NOT managing the server.xml file: $manage_serverxml": }
   }
 
   file { "/etc/${tomcat7::tomcat_pkg}/Catalina/localhost/manager.xml":
