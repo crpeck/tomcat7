@@ -17,13 +17,11 @@ describe 'tomcat7', :type => 'class' do
     it { should contain_service('tomcat7') }
 
     describe 'config tomcat7' do
-      it { should contain_group('tomcat7') }
-      it { should contain_user('tomcat7') }
       it { should contain_file('/etc/tomcat7/server.xml') }
       it { should contain_file('/etc/tomcat7/tomcat-users.xml') }
       it { should contain_file('/etc/logrotate.d/rotatelogs-tomcat-accesslog') }
       it { should contain_file('/etc/tomcat7/Catalina/localhost/manager.xml') }
-      it { should contain_file('/etc/defaults/tomcat7') }
+      it { should contain_file('/etc/default/tomcat7') }
     end
 
     describe 'package tomcat7' do

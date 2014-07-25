@@ -28,7 +28,6 @@ matrix:
 notifications:
   email: false
   hipchat: false
-    rooms:
-      - secure:
+    rooms: false
   on_success: always
   on_failure: always
