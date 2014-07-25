@@ -1,16 +1,7 @@
-language: ruby
-bundler_args: --without development
-script: "bundle exec rake spec SPEC_OPTS='--format documentation'"
 rvm:
   - 1.8.7
   - 1.9.3
   - 2.0.0
-before_install:
-  - gem update --system 2.1.11
-script:
-  - "rake lint"
-  - "rake spec SPEC_OPTS='--format documentation'"
-  - "rake syntax"
 env:
   - PUPPET_VERSION="~> 2.7.0"
   - PUPPET_VERSION="~> 3.1.0"
@@ -26,8 +17,5 @@ matrix:
     - rvm: 2.0.0
       env: PUPPET_VERSION="~> 3.1.0"
 notifications:
-  email: false
-  hipchat: false
-    rooms: false
-  on_success: always
-  on_failure: always
+  email:
+    - chris.peck@gmail.com
