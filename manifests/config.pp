@@ -1,6 +1,7 @@
 class tomcat7::config {
 
   if $manage_serverxml {
+    warn( 'NOTE - Puppet is managing the server.xml file' )
     file { "/etc/${tomcat7::tomcat_pkg}/server.xml":
       ensure  => file,
       mode    => '0644',
