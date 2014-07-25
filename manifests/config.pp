@@ -1,11 +1,13 @@
 class tomcat7::config {
 
-  file { "/etc/${tomcat7::tomcat_pkg}/server.xml":
-    ensure  => file,
-    mode    => '0644',
-    owner   => 'root',
-    group   => $tomcat7::tomcat_group,
-    content => template('tomcat7/server.xml.erb'),
+  if $manage_serverxml {
+    file { "/etc/${tomcat7::tomcat_pkg}/server.xml":
+      ensure  => file,
+      mode    => '0644',
+      owner   => 'root',
+      group   => $tomcat7::tomcat_group,
+      content => template('tomcat7/server.xml.erb'),
+    }
   }
 
   file { "/etc/${tomcat7::tomcat_pkg}/Catalina/localhost/manager.xml":
