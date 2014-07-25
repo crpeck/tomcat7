@@ -90,10 +90,10 @@ class tomcat7 (
   include tomcat7::config
   include tomcat7::service
 
-  anchor { 'tomcat_start': } ->
+  anchor { 'tomcat7_start': } ->
   Class [ 'tomcat7::package' ] ->
   Class [ 'tomcat7::config' ] ->
   Class [ 'tomcat7::service' ] ->
-  anchor { 'tomcat_end': }
+  anchor { 'tomcat7_end': }
 
 }

@@ -36,7 +36,7 @@ Requires:
 
 Sample Usage:
 
-class { '::tomcat':
+class { '::tomcat7':
   port                              => '8080',
   ssl_port                          => '8443',
   java_opts                         => [ '-Xms512M', '-Xmx1024M' ],
