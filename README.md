@@ -16,6 +16,7 @@ Note the following are also set in the server.xml file:
         />
 
 Parameters:
+  manage_serverxml - puppet manages the server.xml file, true or false
   port - port that Tomcat listens on
   ssl_port - if defined, the SSL port Tomcat listens on, setting this enables SSL
   max_threads - maxthreads setting in server.xml

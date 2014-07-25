@@ -32,6 +32,7 @@
 # Sample Usage:
 #
 #  class { '::tomcat7':
+#    manager_serverxml                 => true
 #    port                              => '8080',
 #    ssl_port                          => '8443',
 #    java_opts                         => [ '-Xms512M', '-Xmx1024M' ],
@@ -64,7 +65,7 @@ class tomcat7 (
   $manager_hosts    = $tomcat7::params::manager_hosts,
 ) inherits tomcat7::params {
 
-  validate_string($manage_serverxml)
+  validate_bool($manage_serverxml)
   validate_hash($setenv)
   validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $max_threads, $port, $ssl_port)
   validate_array($java_opts)
