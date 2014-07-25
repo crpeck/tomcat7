@@ -68,7 +68,7 @@ class tomcat7 (
   validate_bool($manage_serverxml)
   validate_hash($setenv)
   validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $max_threads, $port, $ssl_port)
-  validate_array($java_opts)
+  validate_array($java_opts, $tomcat_managers)
 
   if $::osfamily == 'Debian' {
     $tomcat_pkg       = 'tomcat7'
