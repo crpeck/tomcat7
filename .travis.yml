@@ -2,10 +2,6 @@ rvm:
   - 1.8.7
   - 1.9.3
   - 2.0.0
-script:
-  - "rake lint"
-  - "rake spec SPEC_OPTS='--format documentation'"
-  - "rake syntax"
 env:
   - PUPPET_VERSION="~> 2.7.0"
   - PUPPET_VERSION="~> 3.1.0"
