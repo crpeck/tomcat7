@@ -10,6 +10,7 @@
 #        />
 #
 # Parameters:
+#   manage_serverxml - server.xml file managed by Puppet? true or false
 #   port - port that Tomcat listens on
 #   ssl_port - if defined, the SSL port Tomcat listens on, setting this enables SSL
 #   max_threads - maxthreads setting in server.xml
@@ -49,19 +50,21 @@
 
 
 class tomcat7 (
-  $port            = $tomcat7::params::port,
-  $ssl_port        = $tomcat7::params::ssl_port,
-  $max_threads     = $tomcat7::params::max_threads,
-  $keystore_file   = $tomcat7::params::keystore_file,
-  $keystore_pass   = $tomcat7::params::keystore_pass,
-  $keystore_alias  = $tomcat7::params::keystore_alias,
-  $java_opts       = $tomcat7::params::java_opts,
-  $setenv          = $tomcat7::params::setenv,
-  $internalproxies = $tomcat7::params::internalproxies,
-  $tomcat_managers = $tomcat7::params::tomcat_managers,
-  $manager_hosts   = $tomcat7::params::manager_hosts,
+  $manage_serverxml = $tomcat7::params::manage_serverxml,
+  $port             = $tomcat7::params::port,
+  $ssl_port         = $tomcat7::params::ssl_port,
+  $max_threads      = $tomcat7::params::max_threads,
+  $keystore_file    = $tomcat7::params::keystore_file,
+  $keystore_pass    = $tomcat7::params::keystore_pass,
+  $keystore_alias   = $tomcat7::params::keystore_alias,
+  $java_opts        = $tomcat7::params::java_opts,
+  $setenv           = $tomcat7::params::setenv,
+  $internalproxies  = $tomcat7::params::internalproxies,
+  $tomcat_managers  = $tomcat7::params::tomcat_managers,
+  $manager_hosts    = $tomcat7::params::manager_hosts,
 ) inherits tomcat7::params {
 
+  validate_bool($manager_serverxml)
   validate_hash($setenv)
   validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $max_threads, $port, $ssl_port)
   validate_array($java_opts)
