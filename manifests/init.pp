@@ -64,7 +64,7 @@ class tomcat7 (
   $manager_hosts    = $tomcat7::params::manager_hosts,
 ) inherits tomcat7::params {
 
-  validate_bool($manager_serverxml)
+  validate_bool($manage_serverxml)
   validate_hash($setenv)
   validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $max_threads, $port, $ssl_port)
   validate_array($java_opts)
