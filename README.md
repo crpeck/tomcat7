@@ -1,8 +1,6 @@
-tomcat7
+tomcat7 [![Build Status](https://travis-ci.org/crpeck/tomcat7.png)](https://travis-ci.org/crpeck/tomcat7)
 =========
 
-Travis-CI Build Status: [![Build Status](https://travis-ci.org/crpeck/tomcat7.png)](https://travis-ci.org/crpeck/tomcat7)
-=========
  
 A puppet module for managing single instances of tomcat.
 
