@@ -51,23 +51,28 @@
 
 
 class tomcat7 (
-  $manage_serverxml = $tomcat7::params::manage_serverxml,
-  $port             = $tomcat7::params::port,
-  $ssl_port         = $tomcat7::params::ssl_port,
-  $max_threads      = $tomcat7::params::max_threads,
-  $keystore_file    = $tomcat7::params::keystore_file,
-  $keystore_pass    = $tomcat7::params::keystore_pass,
-  $keystore_alias   = $tomcat7::params::keystore_alias,
-  $java_opts        = $tomcat7::params::java_opts,
-  $setenv           = $tomcat7::params::setenv,
-  $internalproxies  = $tomcat7::params::internalproxies,
-  $tomcat_managers  = $tomcat7::params::tomcat_managers,
-  $manager_hosts    = $tomcat7::params::manager_hosts,
+  $manage_serverxml  = $tomcat7::params::manage_serverxml,
+  $port              = $tomcat7::params::port,
+  $ssl_port          = $tomcat7::params::ssl_port,
+  $maxhttpheaderhize = $tomcat7::params::maxhttpheaderhize,
+  $maxspare_threads  = $tomcat7::params::maxspare_threads,
+  $min_threads       = $tomcat7::params::min_threads,
+  $max_threads       = $tomcat7::params::max_threads,
+  $connectiontimeout = $tomcat7::params::connectiontimeout,
+  $keystore_file     = $tomcat7::params::keystore_file,
+  $keystore_pass     = $tomcat7::params::keystore_pass,
+  $keystore_alias    = $tomcat7::params::keystore_alias,
+  $java_opts         = $tomcat7::params::java_opts,
+  $setenv            = $tomcat7::params::setenv,
+  $internalproxies   = $tomcat7::params::internalproxies,
+  $tomcat_managers   = $tomcat7::params::tomcat_managers,
+  $manager_hosts     = $tomcat7::params::manager_hosts,
 ) inherits tomcat7::params {
 
   validate_bool($manage_serverxml)
   validate_hash($setenv)
-  validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $max_threads, $port, $ssl_port)
+  validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $port, $ssl_port)
+  validate_string($maxhttpheaderhize, $maxspare_threads, $min_threads, $max_threads, $connectiontimeout)
   validate_array($java_opts, $tomcat_managers)
 
   if $::osfamily == 'Debian' {
