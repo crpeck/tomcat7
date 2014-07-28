@@ -77,14 +77,14 @@
            <% if @maxhttpheadersize -%>
                maxHttpHeaderSize = "<%= @maxhttpheadeshize -%>"
            <% end %>
-           <% if @max_threads -%>
-               maxThreads        = "<%= @max_threads -%>"
+           <% if @maxthreads -%>
+               maxThreads        = "<%= @maxthreads -%>"
            <% end %>
            <% if @maxspare_threads -%>
-               maxSpareThreads   = "<%= @maxspare_threads -%>"
+               maxSpareThreads   = "<%= @maxsparethreads -%>"
            <% end %>
            <% if @min_threads -%>
-               minThreads        = "<%= @min_threads -%>"
+               minThreads        = "<%= @minthreads -%>"
            <% end %>
            <% if @connectiontimeout -%>
                connectionTimeout = "<%= @connectiontimeout -%>"
@@ -115,7 +115,7 @@
                secure       = "true"
                clientAuth   = "false"
                sslProtocol  = "TLS"
-               maxThreads   = "<%= @max_threads -%>"
+               maxThreads   = "<%= @maxthreads -%>"
                keystoreFile = "<%= @keystore_file -%>"
                keystorePass = "<%= @keystore_pass -%>"
                keyAlias     = "<%= @keystore_alias -%>"

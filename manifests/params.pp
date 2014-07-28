@@ -1,7 +1,7 @@
 class tomcat7::params {
   $manage_serverxml = true
   $port             = '8080'
-  $max_threads      = '200'
+  $maxthreads       = '200'
   $java_opts        = [ '-Xms128M',
                       '-Xmx256M' ]
   # Variables must be named in lower case

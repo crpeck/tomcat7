@@ -15,9 +15,9 @@
 #   ssl_port - if defined, the SSL port Tomcat listens on, setting this enables SSL
 #   connectiontimeout - connectionTimeout in server.xml
 #   maxhttpheadersize - maxHttpHeaderSize in server.xml
-#   maxspare_threads - maxThreads in server.xml
-#   max_threads - maxThreads setting in server.xml
-#   min_threads - minThreads setting in server.xml
+#   maxsparethreads - maxThreads in server.xml
+#   maxthreads - maxThreads setting in server.xml
+#   minthreads - minThreads setting in server.xml
 #   keystore_file - file that contains the java keystore for SSL
 #   keystore_pass - password for $keystore_file
 #   keystore_alias - alias associated with $keystore_file
@@ -59,9 +59,9 @@ class tomcat7 (
   $port              = $tomcat7::params::port,
   $ssl_port          = $tomcat7::params::ssl_port,
   $maxhttpheadersize = $tomcat7::params::maxhttpheadersize,
-  $maxspare_threads  = $tomcat7::params::maxspare_threads,
-  $min_threads       = $tomcat7::params::min_threads,
-  $max_threads       = $tomcat7::params::max_threads,
+  $maxsparethreads   = $tomcat7::params::maxsparethreads,
+  $minsparethreads   = $tomcat7::params::minsaprethreads,
+  $maxthreads        = $tomcat7::params::maxthreads,
   $connectiontimeout = $tomcat7::params::connectiontimeout,
   $keystore_file     = $tomcat7::params::keystore_file,
   $keystore_pass     = $tomcat7::params::keystore_pass,
@@ -76,7 +76,7 @@ class tomcat7 (
   validate_bool($manage_serverxml)
   validate_hash($setenv)
   validate_string($internalproxies, $keystore_file, $keystore_pass, $keystore_alias, $manager_hosts, $port, $ssl_port)
-  validate_string($maxhttpheaderhize, $maxspare_threads, $min_threads, $max_threads, $connectiontimeout)
+  validate_string($maxhttpheaderhize, $maxsparethreads, $minsparethreads, $maxthreads, $connectiontimeout)
   validate_array($java_opts, $tomcat_managers)
 
   if $::osfamily == 'Debian' {
