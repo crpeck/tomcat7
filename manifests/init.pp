@@ -58,7 +58,7 @@ class tomcat7 (
   $manage_serverxml  = $tomcat7::params::manage_serverxml,
   $port              = $tomcat7::params::port,
   $ssl_port          = $tomcat7::params::ssl_port,
-  $maxhttpheaderhize = $tomcat7::params::maxhttpheaderhize,
+  $maxhttpheadersize = $tomcat7::params::maxhttpheadersize,
   $maxspare_threads  = $tomcat7::params::maxspare_threads,
   $min_threads       = $tomcat7::params::min_threads,
   $max_threads       = $tomcat7::params::max_threads,

@@ -74,8 +74,8 @@
     -->
     <Connector port              = "<%= @port -%>"
                protocol          = "HTTP/1.1"
-           <% if @maxhttpheaderhize -%>
-               maxHttpHeaderSize = "<%= @maxhttpheaderhize -%>"
+           <% if @maxhttpheadersize -%>
+               maxHttpHeaderSize = "<%= @maxhttpheadeshize -%>"
            <% end %>
            <% if @max_threads -%>
                maxThreads        = "<%= @max_threads -%>"
