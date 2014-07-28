@@ -13,7 +13,11 @@
 #   manage_serverxml - server.xml file managed by Puppet? true or false
 #   port - port that Tomcat listens on
 #   ssl_port - if defined, the SSL port Tomcat listens on, setting this enables SSL
-#   max_threads - maxthreads setting in server.xml
+#   connectiontimeout - connectionTimeout in server.xml
+#   maxhttpheadersize - maxHttpHeaderSize in server.xml
+#   maxspare_threads - maxThreads in server.xml
+#   max_threads - maxThreads setting in server.xml
+#   min_threads - minThreads setting in server.xml
 #   keystore_file - file that contains the java keystore for SSL
 #   keystore_pass - password for $keystore_file
 #   keystore_alias - alias associated with $keystore_file
