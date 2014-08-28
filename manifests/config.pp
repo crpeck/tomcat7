@@ -32,7 +32,7 @@ class tomcat7::config {
 
   file { "${tomcat7::defaults}/${tomcat7::tomcat_pkg}":
     ensure  => file,
-    mode    => '0755',
+    mode    => '0640',
     owner   => 'root',
     group   => $tomcat7::tomcat_group,
     require => File ["/var/lib/${tomcat7::tomcat_pkg}/bin"],
